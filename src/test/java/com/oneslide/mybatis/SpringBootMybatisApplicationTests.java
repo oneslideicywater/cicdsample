@@ -13,4 +13,9 @@ public class SpringBootMybatisApplicationTests {
 	public void contextLoads() {
 	}
 
+	@Test
+	public void testHell(){
+		System.out.println("this is test 1");
+	}
+
 }

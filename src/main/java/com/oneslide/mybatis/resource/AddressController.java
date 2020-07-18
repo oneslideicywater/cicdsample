@@ -1,7 +1,9 @@
 package com.oneslide.mybatis.resource;
 
 import com.oneslide.mybatis.mapper.AddressMapper;
+import com.oneslide.mybatis.mapper.UsersMapper;
 import com.oneslide.mybatis.model.Address;
+import com.oneslide.mybatis.model.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,14 +18,18 @@ public class AddressController {
     @Autowired
     AddressMapper mapper;
 
+    @Autowired
+    UsersMapper mapper2;
+
     @GetMapping("/basicSearch")
-    public List<Address> searchAddress(@RequestParam String street){
-        Map<String,Object> map =new HashMap<>();
-        List<Integer> list=new ArrayList<>();
-        list.add(1);
-        list.add(3);
-        map.put("idList",list);
-        List<Address> lista =mapper.elasticSearchAddressForeach(map);
-        return lista;
+    public List<Users> searchAddress(){
+        return mapper2.findAllNames();
+    }
+
+
+
+    @GetMapping("/healthCheck")
+    public String checkHealth(){
+        return "Hello world";
     }
 }
